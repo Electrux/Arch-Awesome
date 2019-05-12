@@ -1,0 +1,3 @@
+[submodule "Dotfiles/dotconfig/awesome/net_widgets"]
+	path = Dotfiles/dotconfig/awesome/net_widgets
+	url = https://github.com/pltanton/net_widgets.git
