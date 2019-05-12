@@ -14,6 +14,11 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+-- Lain
+local lain = require("lain")
+-- xrdb color scheme
+local xresources = require("beautiful.xresources")
+local xrdb = xresources.get_current_theme()
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -51,6 +56,44 @@ beautiful.init(awful.util.getdir("config") .. "/themes/xresources/theme.lua")
 terminal = "alacritty"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
+
+-- Custom widgets
+-- TODO: Change the net widget module to equivalent in lain widgets
+local vol = lain.widget.pulse {
+    settings = function()
+        widget.markup = ' <span color="' .. xrdb.color15 .. '" font="FontAwesome 8"></span> '
+            .. volume_now.right .. '%'
+    end
+}
+local net_widgets = require("net_widgets")
+net_wireless = net_widgets.wireless({interface="wlp3s0"})
+local cpu = lain.widget.cpu {
+    settings = function()
+        widget.markup = ' <span color="' .. xrdb.color3 .. '" font="FontAwesome 8"></span> '
+            .. cpu_now.usage .. '%'
+    end
+}
+local mem = lain.widget.mem {
+    settings = function()
+        widget.markup = ' <span color="' .. xrdb.color5 .. '" font="FontAwesome 8"></span> '
+            .. mem_now.perc .. '%'
+    end
+}
+local temp = lain.widget.temp {
+    tempfile = "/sys/class/thermal/thermal_zone1/temp",
+    settings = function()
+        widget.markup = ' <span color="' .. xrdb.color4 .. '" font="FontAwesome 8"></span> '
+            .. coretemp_now .. 'C'
+    end
+}
+local batt = lain.widget.bat {
+    battery = "BAT0",
+    notify = "off",
+    settings = function()
+        widget.markup = ' <span color="' .. xrdb.color14 .. '" font="FontAwesome 8"></span> '
+            .. bat_now.perc .. '%'
+    end
+}
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -210,9 +253,15 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
-            wibox.widget.systray(),
+            -- mykeyboardlayout,
+            vol.widget,
+            net_wireless,
+            cpu.widget,
+            mem.widget,
+            temp.widget,
+            batt.widget,
             mytextclock,
+            wibox.widget.systray(),
             s.mylayoutbox,
         },
     }
@@ -326,7 +375,35 @@ globalkeys = gears.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "show the menubar", group = "launcher"}),
+
+    -- Brightness
+    awful.key({ }, "XF86MonBrightnessUp", function ()
+            awful.util.spawn("xbacklight -inc 5", false) end),
+    awful.key({ }, "XF86MonBrightnessDown", function ()
+            awful.util.spawn("xbacklight -dec 5", false) end),
+
+    -- Keyboard Brightness
+    awful.key({ }, "XF86KbdBrightnessUp", function ()
+            awful.util.spawn("xbacklight -ctrl smc::kbd_backlight -inc 20", false) end),
+    awful.key({ }, "XF86KbdBrightnessDown", function ()
+            awful.util.spawn("xbacklight -ctrl smc::kbd_backlight -dec 20", false) end),
+
+    -- Volume
+    awful.key({ }, "XF86AudioRaiseVolume", function ()
+            awful.util.spawn("amixer -q -D pulse set Master 2%+ unmute", false) end),
+    awful.key({ }, "XF86AudioLowerVolume", function ()
+            awful.util.spawn("amixer -q -D pulse set Master 2%- unmute", false) end),
+    awful.key({ }, "XF86AudioMute", function ()
+            awful.util.spawn("amixer -q -D pulse set Master toggle", false) end),
+
+    -- Multimedia
+    awful.key({ }, "XF86AudioPrev", function ()
+            awful.util.spawn("mpc -h 127.0.1.1 prev", false) end),
+    awful.key({ }, "XF86AudioNext", function ()
+            awful.util.spawn("mpc -h 127.0.1.1 next", false) end),
+    awful.key({ }, "XF86AudioPlay", function ()
+            awful.util.spawn("mpc -h 127.0.1.1 toggle", false) end)
 )
 
 clientkeys = gears.table.join(
