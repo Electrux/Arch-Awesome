@@ -1,0 +1,145 @@
+!---------------------------!
+!     Color Definitions     !
+!---------------------------!
+
+#define base00 #2E3440
+#define base01 #3B4252
+#define base02 #434C5E
+#define base03 #4C566A
+#define base04 #D8DEE9
+#define base05 #E5E9F0
+#define base06 #ECEFF4
+#define base07 #8FBCBB
+#define base08 #88C0D0
+#define base09 #81A1C1
+#define base0A #5E81AC
+#define base0B #BF616A
+#define base0C #D08770
+#define base0D #EBCB8B
+#define base0E #A3BE8C
+#define base0F #B48EAD
+
+#define bordef #5E3440
+#define bornef #3A3744
+#define poly00 base00
+
+!---------------------------!
+! Settings for Rofi colors  !
+!---------------------------!
+! State:           'bg',		'fg',		'bgalt',	'hlbg',		'hlfg'
+rofi.color-normal: base00,		base06,		base00,		base01,		base05
+rofi.color-urgent: base00,		base02,		base00,		base01,		base03
+rofi.color-active: base00,		base05,		base00,		base01,		base04
+! Window:         'background',		'border',	'separator'
+rofi.color-window: base00,		bordef,		base00
+! HiDPI
+rofi.dpi: 220
+
+!-----------------------------!
+! Settings for HiDPI displays !
+!-----------------------------!
+Xft.dpi: 220
+Xft.autohint: 1
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+!-----------------------------!
+!    Transparency settings    !
+!-----------------------------!
+! Will cause background to go black
+URxvt.transparent: false
+URxvt.shading: 0
+
+!---------------------------!
+!  Core settings for Rxvt   !
+!---------------------------!
+URxvt*depth:			32
+URxvt.internalBorder:		5
+URxvt.lineSpace:		0
+URxvt.backend: xrender
+URxvt.buffered: false
+
+!---------------------------!
+!   Font settings for Rxvt  !
+!---------------------------!
+URxvt.allow_bold:           true
+URxvt*font: xft:Source Code Pro for Powerline:style=Medium:size=7,xft:FontAwesome:size=7
+URxvt*boldFont: xft:Source Code Pro for Powerline:style=Bold:size=7,xft:FontAwesome:size=7
+
+!-----------------------------!
+! Scrollbar settings for Rxvt !
+!-----------------------------!
+URxvt.scrollStyle:          rxvt
+URxvt.scrollBar:            false
+
+!----------------------------------!
+! Perl extension settings for Rxvt !
+!----------------------------------!
+URxvt.perl-ext-common:      default,selection-to-clipboard,matcher
+URxvt.matcher.button:       1
+URxvt.urlLauncher:          google-chrome-stable
+
+!----------------------------!
+!  Cursor settings for Rxvt  !
+!----------------------------!
+URxvt.cursorBlink:          true
+URxvt.cursorUnderline:      false
+
+!----------------------------!
+!  Pointer settings for Rxvt !
+!----------------------------!
+URxvt.pointerBlank:         true
+
+!-----------------------!
+! Cursor settings for X !
+!-----------------------!
+Xcursor.theme: gentoo
+Xcursor.size: 40
+Xcursor.dpi: 220
+
+!----------------------------------------!
+!    Color scheme in Xresources format   !
+!----------------------------------------!
+
+! border & polybar background
+*border:	bordef
+*bornor:	bornef
+*polyback:	poly00
+
+*foreground:   base05
+#ifdef background_opacity
+*background:   [background_opacity]base00
+#else
+*background:   base00
+#endif
+*cursorColor:  base05
+
+*color0:       base00
+*color1:       base08
+*color2:       base0B
+*color3:       base0A
+*color4:       base0D
+*color5:       base0E
+*color6:       base0C
+*color7:       base05
+
+*color8:       base03
+*color9:       base08
+*color10:      base0B
+*color11:      base0A
+*color12:      base0D
+*color13:      base0E
+*color14:      base0C
+*color15:      base07
+
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+*color16:      base09
+*color17:      base0F
+*color18:      base01
+*color19:      base02
+*color20:      base04
+*color21:      base06
