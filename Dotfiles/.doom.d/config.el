@@ -30,3 +30,8 @@
 
 ;; Corrects (and improves) org-mode's native fontification.
 (doom-themes-org-config)
+
+;; My language <3 (and other configs)
+(let ((default-directory  "~/Git/Electrux/Emacs-Configs/"))
+  (normal-top-level-add-subdirs-to-load-path))
+(require 'ethl-mode)

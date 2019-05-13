@@ -62,7 +62,7 @@ editor_cmd = terminal .. " -e " .. editor
 local vol = lain.widget.pulse {
     settings = function()
         widget.markup = ' <span color="' .. xrdb.color15 .. '" font="FontAwesome 8"></span> '
-            .. volume_now.right .. '%'
+            .. volume_now.right .. '% ' .. '(muted: ' .. volume_now.muted .. ')'
     end
 }
 local net_widgets = require("net_widgets")
