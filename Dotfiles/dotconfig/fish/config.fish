@@ -10,6 +10,8 @@ if test "$FISH_LOGIN_LOADED" !=  "true"
 
 	# Qt HiDPI scaling
 	set -x QT_AUTO_SCREEN_SCALE_FACTOR 1
+	# Qt theme
+	set -x QT_QPA_PLATFORMTHEME "qt5ct"
 
 	# GTK-3 HiDPI scaling
 	set -x GDK_SCALE 2
