@@ -35,3 +35,11 @@
 (let ((default-directory  "~/Git/Electrux/Emacs-Configs/"))
   (normal-top-level-add-subdirs-to-load-path))
 (require 'ethl-mode)
+
+;; Set default style for C/C++ language.
+(setq-default c-default-style "bsd")
+
+;; Set indentation mode for C-esque languages.
+(setq-default c-basic-offset 8
+	      tab-width 8
+	      indent-tabs-mode t)
