@@ -644,5 +644,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- Auto start the following applications
 awful.spawn.with_shell("compton -bc --config ~/.config/compton/compton.conf")
-awful.spawn("xset -dpms s off")
-awful.spawn("dunst")
+awful.spawn.once("xset -dpms s off")
+awful.spawn.single_instance("dunst")
+awful.spawn.single_instance("discord-canary", { tag = "9" })
+awful.spawn.single_instance("qbittorrent", { tag = "8" })
