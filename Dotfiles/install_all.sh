@@ -19,7 +19,7 @@ rustup default nightly && rustup update
 source ~/.cargo/env
 
 ## Install other software
-sudo pacman -S --noconfirm --needed lvm2 zsh zsh-completions zsh-syntax-highlighting zsh-autosuggestions syncthing mpd ncmpcpp ranger neofetch mpv wget curl git dunst rofi awesome rlwrap vicious dex networkmanager pulseaudio pulseaudio-bluetooth pulseaudio-alsa alsa-lib alsa-utils bluez blueman pavucontrol bluez-utils network-manager-applet acpi youtube-dl openssh thefuck bc compton emacs feh ttf-font-awesome noto-fonts-emoji alacritty flameshot exa lxappearance qbittorrent python-pip python2-pip lsof strace htop neovim rsync bash-completion tlp xf86-input-evdev w3m tree xf86-video-intel xf86-video-vesa mesa qt5ct zathura zathura-pdf-mupdf
+sudo pacman -S --noconfirm --needed lvm2 zsh zsh-completions zsh-syntax-highlighting zsh-autosuggestions syncthing mpd ncmpcpp ranger neofetch mpv wget curl git dunst rofi awesome rlwrap vicious dex networkmanager pulseaudio pulseaudio-bluetooth pulseaudio-alsa alsa-lib alsa-utils bluez blueman pavucontrol bluez-utils network-manager-applet acpi youtube-dl openssh thefuck bc compton emacs feh ttf-font-awesome noto-fonts-emoji alacritty flameshot exa lxappearance qbittorrent python-pip python2-pip lsof strace htop neovim rsync bash-completion tlp xf86-input-evdev w3m tree xf86-video-intel xf86-video-vesa mesa qt5ct zathura zathura-pdf-mupdf fuse exfat-utils
 
 # Use qt5ct for setting up qt fonts (to size 7)
 # Also, do NOT enable the experimental rendering (from chrome://flags),
