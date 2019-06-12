@@ -70,7 +70,7 @@ ln -sf ${script_dir}/dotncmpcpp ~/.ncmpcpp
 ln -sf ${script_dir}/dotconfig/{alacritty,compton,dunst,fish,mpd,awesome,ranger,zathura,libinput-gestures.conf} ~/.config/
 
 ## Others
-ln -sf ${script_dir}/.{asoundrc,.doom.d,vimrc,xinitrc,Xresources} ~/
+ln -sf ${script_dir}/.{asoundrc,doom.d,vimrc,xinitrc,Xresources,zshrc} ~/
 
 ## For neovim
 mkdir -p ~/.config/nvim/
@@ -132,10 +132,11 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 
 # Finally, install oh my zsh and its theme
 
-#sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed 's:env zsh::g')"
-#git clone https://github.com/denysdovhan/spaceship-prompt.git "${HOME}/.oh-my-zsh/custom/themes/spaceship-prompt"
-#rm -rf ~/.zshrc
-#mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed 's:env zsh::g')"
+git clone https://github.com/denysdovhan/spaceship-prompt.git "${HOME}/.oh-my-zsh/custom/themes/spaceship-prompt"
+git clone https://github.com/halfo/lambda-mod-zsh-theme.git "${HOME}/.oh-my-zsh/custom/themes/lambda-mod-zsh-theme"
+rm -rf ~/.zshrc
+mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
 #(cd /tmp && git clone --depth 1 --config core.autocrlf=false https://github.com/twolfson/sexy-bash-prompt && cd sexy-bash-prompt && make install) && source ~/.bashrc
 
 sudo mkinitcpio -p linux
